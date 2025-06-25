@@ -12,6 +12,22 @@ def create_connection():
     )
     return connection
 
+def add_account():
+    try:
+        connection = create_connection()
+        cursor = connection.cursor()
+        query = """
+        INSERT INTO Account(email, account_name, account_type) VALUES (%s, %s, %s)
+        """
+        cursor.execute(query, (email, account_name, account_type,))
+        connection.commit()
+        return True
+    except Exception as e:
+        return False 
+    finally:
+        cursor.close()
+        connection.close()
+
 def get_account(email, account_name, account_type):
     try:
         connection = create_connection()
@@ -138,4 +154,12 @@ def calculate_interest(email, account_name, account_type):
         return False
     
 def calculate_earnings():
-    return None
+    try:
+        connection = create_connection()
+        cursor = connection.cursor()
+        query = """
+         
+"""
+
+    except Exception as e:
+        return None
